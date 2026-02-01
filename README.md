@@ -1,16 +1,123 @@
-# React + Vite
+# CodeBuddy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time collaborative coding platform. Multiple users can join a shared workspace to write code together, draw on a whiteboard, and communicate via voice chat.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Collaborative Code Editor** - Monaco-based editor with syntax highlighting, autocomplete, and real-time sync across users
+- **Shared Canvas** - Whiteboard for sketching ideas, diagrams, or explaining concepts
+- **Voice Chat** - WebRTC-based voice rooms for communication during sessions
+- **Multiple File Support** - Create and switch between multiple code files
+- **Room System** - Create or join rooms using a simple room code
+- **User Authentication** - Email/password based login and signup
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Frontend:**
+- React 18 with Vite
+- Monaco Editor
+- Fabric.js for canvas
+- PeerJS for voice chat
+- Socket.io client
 
-## Expanding the ESLint configuration
+**Backend:**
+- Node.js with Express
+- Socket.io for real-time communication
+- MongoDB with Mongoose
+- JWT for authentication
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Prerequisites
+
+Before running this project, make sure you have:
+
+- Node.js (v18 or higher)
+- MongoDB (local installation or MongoDB Atlas account)
+- npm or yarn
+
+## Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/arnavag9545-star/CodeBuddy.git
+cd CodeBuddy
+```
+
+### 2. Install frontend dependencies
+
+```bash
+npm install
+```
+
+### 3. Install backend dependencies
+
+```bash
+cd server
+npm install
+```
+
+### 4. Configure environment variables
+
+Create a `.env` file in the `server` directory:
+
+```
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/codebuddy
+JWT_SECRET=your-secret-key-here
+NODE_ENV=development
+```
+
+Replace `MONGODB_URI` with your MongoDB connection string if using Atlas.
+
+### 5. Start the backend server
+
+```bash
+cd server
+npm run dev
+```
+
+The server will start on `http://localhost:5000`.
+
+### 6. Start the frontend (in a new terminal)
+
+```bash
+npm run dev
+```
+
+The frontend will start on `http://localhost:5173`.
+
+## Usage
+
+1. Open `http://localhost:5173` in your browser
+2. Create an account or log in
+3. Create a new room or join an existing one using a room code
+4. Share the room code with others to collaborate
+
+## Project Structure
+
+```
+CodeBuddy/
+├── src/                    # Frontend React app
+│   ├── components/         # React components
+│   ├── pages/              # Page components
+│   └── services/           # API and socket services
+├── server/                 # Backend Node.js app
+│   ├── src/
+│   │   ├── models/         # Mongoose models
+│   │   ├── routes/         # Express routes
+│   │   ├── socket/         # Socket.io handlers
+│   │   └── middleware/     # Auth middleware
+│   └── package.json
+├── public/                 # Static assets
+└── package.json
+```
+
+## Known Issues
+
+- Google OAuth is not implemented (requires Google Cloud Console setup)
+- Code execution uses a third-party API and may have rate limits
+- Voice chat requires microphone permissions
+
+## License
+
+MIT
