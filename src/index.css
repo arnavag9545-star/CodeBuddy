@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+/* Custom Theme Variables for Tailwind v4 */
+@theme {
+  --color-editor-bg: #1e1e2e;
+  --color-panel-bg: #181825;
+  --color-accent: #89b4fa;
+  --color-accent-hover: #b4befe;
+  --color-success: #a6e3a1;
+  --color-error: #f38ba8;
+  --color-warning: #fab387;
+  --color-text-primary: #cdd6f4;
+  --color-text-secondary: #a6adc8;
+  --color-border: #313244;
+
+  --font-family-code: 'JetBrains Mono', monospace;
+  --font-family-ui: 'Space Grotesk', sans-serif;
+
+  --animate-fadeIn: fadeIn 0.3s ease-in-out;
+  --animate-pulse-slow: pulse 2s infinite;
+  --animate-spin-slow: spin 2s linear infinite;
+}
+
+/* Custom Keyframes */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(137, 180, 250, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(137, 180, 250, 0.6);
+  }
+}
+
+/* Custom Scrollbar Styling for Dark Theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #181825;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #313244;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #45475a;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #313244 #181825;
+}
+
+/* Global Styles */
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1e1e2e;
+  color: #cdd6f4;
+  font-family: 'Space Grotesk', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Code elements should use monospace */
+code,
+pre,
+.code-editor {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Utility Classes */
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.glass {
+  background: rgba(30, 30, 46, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(49, 50, 68, 0.5);
+}
+
+.gradient-border {
+  border: 1px solid transparent;
+  background: linear-gradient(#1e1e2e, #1e1e2e) padding-box,
+    linear-gradient(135deg, #89b4fa, #cba6f7) border-box;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid #89b4fa;
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(137, 180, 250, 0.3);
+  color: #cdd6f4;
+}
